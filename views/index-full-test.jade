@@ -1,0 +1,38 @@
+doctype
+html
+  head
+    title #{title}
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/stylesheets/calendar.css')
+    style(type='text/css').
+      .btn-twitter {
+        padding-left: 30px;
+        background: rgba(0, 0, 0, 0) url(https://platform.twitter.com/widgets/images/btn.27237bab4db188ca749164efd38861b0.png) -20px 9px no-repeat;
+      }
+      .btn-twitter:hover {
+        background-position:  -21px -16px;
+      }
+  body
+    div(class='container')
+      div(class='page-header')
+        div(class='pull-right form-inline')
+          div(class='btn-group')
+            button(class='btn btn-primary', data-calendar-nav='prev') << Prev
+            button(class='btn btn-primary', data-calendar-nav='today') Today
+            button(class='btn btn-primary', data-calendar-nav='next') Next >>
+          div(class='btn-group')
+            button(class='btn btn-warning', data-calendar-view='year') Year
+            button(class='btn btn-warning', data-calendar-view='month') Month
+            button(class='btn btn-warning', data-calendar-view='week') Week
+            button(class='btn btn-warning', data-calendar-view='day') Day
+      div(class='row')
+        div(class='col-md-9')
+          div(id='calendar')
+        div(class='col-md-3')
+          div(class='row')
+      script(type='text/javascript', src='/javascripts/vendor/jquery.js')
+      script(type='text/javascript', src='/javascripts/vendor/underscore-min.js')
+      script(type='text/javascript', src='/javascripts/bootstrap.min.js')
+      script(type='text/javascript', src='/javascripts/calendar.js')
+      script(type='text/javascript', src='/javascripts/app.js')

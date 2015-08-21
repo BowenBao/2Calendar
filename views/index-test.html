@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Minimum Setup</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/language/zh-CN.js"></script>
+		<link rel="stylesheet" href="css/calendar.css">
+	</head>
+	<body>
+
+		<div id="calendar"></div>
+
+		<script type="text/javascript" src="js/vendor/jquery.js"></script>
+		<script type="text/javascript" src="js/vendor/underscore-min.js"></script>
+		<script type="text/javascript" src="js/calendar.js"></script>
+		<script type="text/javascript">
+			var calendar = $("#calendar").calendar(
+			{
+			tmpl_path: "./tmpls/",
+			events_source: function () { return []; },
+      language: 'zh-CN.js'
+			});
+		</script>
+	</body>
+</html>
