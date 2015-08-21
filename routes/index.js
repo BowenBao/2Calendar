@@ -95,4 +95,9 @@ router.get('/index-full-test', function(req, res, next) {
 router.get('/events.json', function(req, res, next){
   res.json(events);
 });
+
+router.get('/calendar.html', function(req, res, next){
+	res.render('index-full-test', {title: 'Calendar'});
+});
+
 module.exports = router;
