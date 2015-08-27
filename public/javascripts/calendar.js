@@ -900,9 +900,9 @@ if(!String.prototype.formatNum) {
 				if(source.length) {
 					loader = function() {
 						var events = [];
-                                                var d = new Date();
-                                                var utc_offset = d.getTimezoneOffset();
-                                                var params = {from: self.options.position.start.getTime(), to: self.options.position.end.getTime(), utc_offset: utc_offset};
+                        var d = new Date();
+						var utc_offset = d.getTimezoneOffset();
+						var params = {from: self.options.position.start.getTime(), to: self.options.position.end.getTime(), utc_offset: utc_offset};
 
 						if(browser_timezone.length) {
 							params.browser_timezone = browser_timezone;
@@ -1148,11 +1148,13 @@ if(!String.prototype.formatNum) {
 				if($(this).children('[data-cal-date]').text() == self.activecell) {
 					return;
 				}
+				console.log(slider);
+				console.log(downbox);
 				showEventsList(event, downbox, slider, self);
 			})
 		;
 
-		var slider = $(document.createElement('div')).attr('id', 'cal-slide-box');
+		var slider = $(document.createElement('div')).attr('id', 'cal-slide-box'); // 'container' of contents
 		slider.hide().click(function(event) {
 			event.stopPropagation();
 		});
@@ -1160,6 +1162,7 @@ if(!String.prototype.formatNum) {
 		this._loadTemplate('events-list');
 
 		downbox.click(function(event) {
+			console.log(slider); // not here
 			showEventsList(event, $(this), slider, self);
 		});
 	};
@@ -1178,6 +1181,8 @@ if(!String.prototype.formatNum) {
 		return events;
 	};
 
+	// TODO: Change this function into displaying a timeline. 
+	// Slider content already set.
 	function showEventsList(event, that, slider, self) {
 
 		event.stopPropagation();
@@ -1189,12 +1194,18 @@ if(!String.prototype.formatNum) {
 
 		that.fadeOut('fast');
 
+		console.log(row);
+		console.log(slider); // This proves content within slider is already set at the moment.
+
 		slider.slideUp('fast', function() {
+			// Filling slider with html template
 			var event_list = $('.events-list', cell);
 			slider.html(self.options.templates['events-list']({
 				cal: self,
 				events: self.getEventsBetween(parseInt(event_list.data('cal-start')), parseInt(event_list.data('cal-end')))
 			}));
+			// Finish filling
+			console.log(slider);
 			row.after(slider);
 			self.activecell = $('[data-cal-date]', cell).text();
 			$('#cal-slide-tick').addClass('tick' + tick_position).show();
