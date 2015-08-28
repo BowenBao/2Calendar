@@ -1181,7 +1181,7 @@ if(!String.prototype.formatNum) {
 		return events;
 	};
 
-	// TODO: Change this function into displaying a timeline. 
+	// TODO: Change this function into displaying a timeline.
 	// Slider content already set.
 	function showEventsList(event, that, slider, self) {
 
@@ -1192,12 +1192,12 @@ if(!String.prototype.formatNum) {
 		var row = cell.closest('.cal-before-eventlist');
 		var tick_position = cell.data('cal-row');
 
-		that.fadeOut('fast');
+		that.fadeOut('slow');
 
 		console.log(row);
 		console.log(slider); // This proves content within slider is already set at the moment.
 
-		slider.slideUp('fast', function() {
+		slider.slideUp('slow', function() {
 			// Filling slider with html template
 			var event_list = $('.events-list', cell);
 			slider.html(self.options.templates['events-list']({
@@ -1209,11 +1209,13 @@ if(!String.prototype.formatNum) {
 			row.after(slider);
 			self.activecell = $('[data-cal-date]', cell).text();
 			$('#cal-slide-tick').addClass('tick' + tick_position).show();
-			slider.slideDown('fast', function() {
+			slider.slideDown('slow', function() {
+        /*
 				$('body').one('click', function() {
-					slider.slideUp('fast');
+					slider.slideUp('slow');
 					self.activecell = 0;
 				});
+         */
 			});
 		});
 
